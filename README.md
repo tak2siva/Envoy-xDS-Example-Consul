@@ -1,3 +1,5 @@
+This example is using Envoy-Pilot xDS Server (https://github.com/tak2siva/Envoy-Pilot)
+
 This docker compose setup contains:
 
     - Envoy (port: 10000)
