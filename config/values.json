@@ -1,0 +1,32 @@
+[
+	{
+		"key": "xDS/app-cluster/adstest-cluster/CDS/config",
+		"flags": 0,
+		"value": "WwoJCXsKCQkJIm5hbWUiOiAic29tZV9zZXJ2aWNlIiwKCQkJImNvbm5lY3RfdGltZW91dCI6ICIwLjI1cyIsCgkJCSJ0eXBlIjogIlNUUklDVF9ETlMiLAoJCQkibGJfcG9saWN5IjogIlJPVU5EX1JPQklOIiwKCQkJImhvc3RzIiA6IFsgeyAic29ja2V0X2FkZHJlc3MiIDogeyAiYWRkcmVzcyIgOiAiYXBwMSIsICJwb3J0X3ZhbHVlIiA6IDgxMjMgfX1dCgkJfQoJXQ=="
+	},
+	{
+		"key": "xDS/app-cluster/adstest-cluster/CDS/version",
+		"flags": 0,
+		"value": "MS4w"
+	},
+	{
+		"key": "xDS/app-cluster/adstest-cluster/LDS/config",
+		"flags": 0,
+		"value": "WwoJCQl7CgkJCQkibmFtZSI6ICJsaXN0ZW5lcl8wIiwKCQkJCSJhZGRyZXNzIjogewoJCQkJCSJzb2NrZXRfYWRkcmVzcyI6IHsKCQkJCQkJImFkZHJlc3MiOiAiMC4wLjAuMCIsCgkJCQkJCSJwb3J0X3ZhbHVlIjogMTAwMDAKCQkJCQl9CgkJCQl9LAoJCQkJImZpbHRlcl9jaGFpbnMiOiBbCgkJCQkJewoJCQkJCQkiZmlsdGVycyI6IFsKCQkJCQkJCXsKCQkJCQkJCQkibmFtZSI6ICJlbnZveS5odHRwX2Nvbm5lY3Rpb25fbWFuYWdlciIsCgkJCQkJCQkJImNvbmZpZyI6IHsKCQkJCQkJCQkJInN0YXRfcHJlZml4IjogImluZ3Jlc3NfaHR0cCIsCgkJCQkJCQkJCSJjb2RlY190eXBlIjogIkFVVE8iLAoJCQkJCQkJCQkicm91dGVfY29uZmlnIjogewoJCQkJCQkJCQkJIm5hbWUiOiAibG9jYWxfcm91dGUiLAoJCQkJCQkJCQkJInZpcnR1YWxfaG9zdHMiOiBbCgkJCQkJCQkJCQkJewoJCQkJCQkJCQkJCQkibmFtZSI6ICJsb2NhbF9zZXJ2aWNlIiwKCQkJCQkJCQkJCQkJImRvbWFpbnMiOiBbCgkJCQkJCQkJCQkJCQkiKiIKCQkJCQkJCQkJCQkJXSwKCQkJCQkJCQkJCQkJInJvdXRlcyI6IFsKCQkJCQkJCQkJCQkJCXsKCQkJCQkJCQkJCQkJCQkibWF0Y2giOiB7CgkJCQkJCQkJCQkJCQkJCSJwcmVmaXgiOiAiLyIKCQkJCQkJCQkJCQkJCQl9LAoJCQkJCQkJCQkJCQkJCSJyb3V0ZSI6IHsKCQkJCQkJCQkJCQkJCQkJImNsdXN0ZXIiOiAic29tZV9zZXJ2aWNlIgoJCQkJCQkJCQkJCQkJCX0KCQkJCQkJCQkJCQkJCX0KCQkJCQkJCQkJCQkJXQoJCQkJCQkJCQkJCX0KCQkJCQkJCQkJCV0KCQkJCQkJCQkJfSwKCQkJCQkJCQkJImh0dHBfZmlsdGVycyI6IFsKCQkJCQkJCQkJCXsKCQkJCQkJCQkJCQkibmFtZSI6ICJlbnZveS5yb3V0ZXIiCgkJCQkJCQkJCQl9CgkJCQkJCQkJCV0KCQkJCQkJCQl9CgkJCQkJCQl9CgkJCQkJCV0KCQkJCQl9CgkJCQldCgkJCX0KCQld"
+	},
+	{
+		"key": "xDS/app-cluster/adstest-cluster/LDS/nodes/adstest-node_40/meta",
+		"flags": 0,
+		"value": "eyJJZCI6NDAsIkNsdXN0ZXIiOiJhZHN0ZXN0LWNsdXN0ZXIiLCJOb2RlIjoiYWRzdGVzdC1ub2RlIiwiVXBkYXRlU3VjY2VzcyI6MCwiVXBkYXRlRmFpbHVyZXMiOjAsIkxhc3RVcGRhdGVkVmVyc2lvbiI6IjEuMCIsIkxhc3RVcGRhdGVkVGltZXN0YW1wIjoiMDAwMS0wMS0wMVQwMDowMDowMFoiLCJTdWJzY3JpYmVkVG8iOiJMRFMiLCJBZHNMaXN0IjpudWxsfQ=="
+	},
+	{
+		"key": "xDS/app-cluster/adstest-cluster/LDS/version",
+		"flags": 0,
+		"value": "MS4w"
+	},
+	{
+		"key": "xDS/envoySubscriberSequence",
+		"flags": 0,
+		"value": "NDA="
+	}
+]

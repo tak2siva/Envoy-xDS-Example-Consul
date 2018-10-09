@@ -1,0 +1,110 @@
+version: '3'
+
+services:
+## XDS Server
+  xds-server:
+    image: tak2siva/envoy-pilot:v0.1.83
+    restart: on-failure
+    networks:
+      - xds-example
+    ports:
+      - "9090:9090"
+    expose:
+      - 7777
+    volumes:
+      - $PWD/env_values.txt:/.env
+      - $PWD/wait-for-command.sh:/scripts/wait-for-command.sh
+    depends_on:
+      - consul-server-bootstrap
+    #command: ["./scripts/wait-for-it.sh", "consul-server-bootstrap:8500/v1/status/leader", "--", "echo", "'its up'"]
+    command: "sh -c 'apk add --no-cache curl; chmod +x /scripts/wait-for-command.sh; sh /scripts/wait-for-command.sh -t 30 -c \"curl -f http://consul-server-bootstrap:8500/v1/status/leader\" && ./Envoy-Pilot'"
+
+## Import Consul KV Pairs
+  consul-import:
+    image: consul:latest
+    restart: on-failure
+    networks:
+      - xds-example
+    volumes:
+      - $PWD/config/values.json:/values.json
+      - $PWD/wait-for-command.sh:/scripts/wait-for-command.sh
+    depends_on:
+      - consul-server-bootstrap
+    command: "sh -c 'chmod +x /scripts/wait-for-command.sh; sh /scripts/wait-for-command.sh -t 30 -c \"curl -f http://consul-server-bootstrap:8500/v1/status/leader\" && CONSUL_HTTP_ADDR=consul-server-bootstrap:8500 consul kv import @values.json'"
+  
+## App Servers  
+  app1:
+    image: tak2siva/tiny-mock-server
+    environment:
+      PORT: 8123
+      CONTENT: 'this is app --ONE--'
+      CODE: 200
+    expose:
+      - 8123
+    networks:
+      - xds-example
+  
+  app2:
+    image: tak2siva/tiny-mock-server
+    environment:
+      PORT: 8126
+      CONTENT: 'this is app --TWO--'
+      CODE: 200
+    expose:
+      - 8126
+    networks:
+      - xds-example      
+
+## Envoy
+  envoy:
+    image: envoyproxy/envoy:v1.7.0
+    volumes:
+      - $PWD/envoy-config.yaml:/envoy-config.yaml
+    command: ["envoy", "-c", "/envoy-config.yaml", "--v2-config-only", "-l", "info", "--service-cluster","xdstest-cluster","--service-node","xdstest-node"]
+    depends_on:
+      - xds-server
+    networks:
+      - xds-example
+    ports:
+      - "9901:9901"
+      - "10000:10000"
+
+## Consul Setup
+  consul-agent-1: &consul-agent
+    image: consul:latest
+    networks:
+      - xds-example
+    command: "agent -retry-join consul-server-bootstrap -client 0.0.0.0"  
+    logging:
+      driver: none
+
+
+  consul-agent-2:
+    <<: *consul-agent
+
+  consul-agent-3:
+    <<: *consul-agent
+
+  consul-server-1: &consul-server
+    <<: *consul-agent
+    command: "agent -server -retry-join consul-server-bootstrap -client 0.0.0.0"
+
+  consul-server-2:
+    <<: *consul-server
+
+  consul-server-bootstrap:
+    <<: *consul-agent
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"
+    command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8500/v1/status/leader"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  xds-example:
