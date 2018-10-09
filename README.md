@@ -9,6 +9,8 @@ To start
 docker-compose up
 ```
 
+## Config Version 1.0
+
 Open consul on localhost:8500 and check the key `xDS/app-cluster/adstest-cluster/CDS/config`
 By default the cluster `some_service` will be pointing to `app1:8123` with version `1.0`
 
@@ -40,7 +42,7 @@ curl http://localhost:10000
 this is app --ONE--
 ```
 
-## Dynamic Updates
+## Config Version 2.0 (Dynamic Updates)
 
 Now change the `some_service` hosts to point `app2:8126` with version `2.0` (i.e)
 
