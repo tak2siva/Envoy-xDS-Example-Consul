@@ -3,7 +3,7 @@ version: '3'
 services:
 ## XDS Server
   xds-server:
-    image: tak2siva/envoy-pilot:v0.1.83
+    image: tak2siva/envoy-pilot:v0.2.7
     restart: on-failure
     networks:
       - xds-example
